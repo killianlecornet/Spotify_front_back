@@ -1,54 +1,73 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-const Addartist = () => {
+const AddArtist = () => {
     const [name, setName] = useState('');
-    const [imageUrl, setImageUrl] = useState('');
     const [description, setDescription] = useState('');
+    const [albums, setAlbums] = useState([]);
+    const [selectedAlbums, setSelectedAlbums] = useState([]);
+    const [musics, setMusics] = useState([]);
+    const [selectedMusics, setSelectedMusics] = useState([]);
+    const [image, setImage] = useState(null);
+
+    useEffect(() => {
+        // Charger la liste des albums et des musiques
+        fetch('http://localhost:3000/album')
+            .then(response => response.json())
+            .then(data => setAlbums(data))
+            .catch(error => console.error('Erreur:', error));
+
+        fetch('http://localhost:3000/music')
+            .then(response => response.json())
+            .then(data => setMusics(data))
+            .catch(error => console.error('Erreur:', error));
+    }, []);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const newArtist = { name, imageUrl, description };
+
+        const formData = new FormData();
+        formData.append('name', name);
+        formData.append('description', description);
+        formData.append('albums', selectedAlbums.join(','));
+        formData.append('musics', selectedMusics.join(','));
+        if (image) {
+            formData.append('image', image);
+        }
 
         try {
-            const response = await fetch('http://localhost:3000/artist', {
+            const response = await fetch('http://localhost:3000/artist/upload', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(newArtist)
+                body: formData,
             });
 
             if (!response.ok) {
-                throw new Error('Erreur lors de la création de l\'artiste');
+                throw new Error('Erreur lors de l\'ajout de l\'artiste');
             }
 
             alert('Artiste ajouté avec succès!');
-            setName('');
-            setImageUrl('');
-            setDescription('');
+            // Réinitialiser les champs du formulaire ici si nécessaire
         } catch (error) {
             console.error('Erreur:', error);
         }
     };
 
     return (
-        <div>
+        <div className="container">
             <h1>Ajouter un Nouvel Artiste</h1>
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label htmlFor="name">Nom de l'artiste:</label>
-                    <input type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} required />
-                </div>
-                <div>
-                    <label htmlFor="imageUrl">URL de l'image:</label>
-                    <input type="text" id="imageUrl" value={imageUrl} onChange={(e) => setImageUrl(e.target.value)} required />
-                </div>
-                <div>
-                    <label htmlFor="description">Description:</label>
-                    <textarea id="description" value={description} onChange={(e) => setDescription(e.target.value)} required></textarea>
-                </div>
+            <form onSubmit={handleSubmit} encType="multipart/form-data">
+                <input type="text" value={name} onChange={e => setName(e.target.value)} placeholder="Nom de l'artiste" required />
+                <textarea value={description} onChange={e => setDescription(e.target.value)} placeholder="Description de l'artiste" required />
+                <select multiple value={selectedAlbums} onChange={e => setSelectedAlbums(Array.from(e.target.selectedOptions, option => option.value))}>
+                    {albums.map(album => <option key={album._id} value={album._id}>{album.title}</option>)}
+                </select>
+                <select multiple value={selectedMusics} onChange={e => setSelectedMusics(Array.from(e.target.selectedOptions, option => option.value))}>
+                    {musics.map(music => <option key={music._id} value={music._id}>{music.title}</option>)}
+                </select>
+                <input type="file" onChange={e => setImage(e.target.files[0])} />
                 <button type="submit">Ajouter l'Artiste</button>
             </form>
         </div>
     );
 };
 
-export default Addartist;
+export default AddArtist;

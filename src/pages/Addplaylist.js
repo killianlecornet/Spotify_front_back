@@ -2,10 +2,13 @@ import React, { useState, useEffect } from 'react';
 
 const AddPlaylist = () => {
     const [title, setTitle] = useState('');
+    const [description, setDescription] = useState('');
     const [musics, setMusics] = useState([]);
     const [selectedMusics, setSelectedMusics] = useState([]);
+    const [image, setImage] = useState(null);
 
     useEffect(() => {
+        // Charger la liste des musiques
         fetch('http://localhost:3000/music')
             .then(response => response.json())
             .then(data => setMusics(data))
@@ -14,60 +17,43 @@ const AddPlaylist = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const newPlaylist = { title, musics: selectedMusics };
+
+        const formData = new FormData();
+        formData.append('title', title);
+        formData.append('description', description);
+        formData.append('musics', selectedMusics.join(','));
+        if (image) {
+            formData.append('image', image);
+        }
 
         try {
-            const response = await fetch('http://localhost:3000/playlist', {
+            const response = await fetch('http://localhost:3000/playlist/upload', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(newPlaylist)
+                body: formData,
             });
 
             if (!response.ok) {
-                throw new Error('Erreur lors de la création de la playlist');
+                throw new Error('Erreur lors de l\'ajout de la playlist');
             }
 
-            alert('Playlist créée avec succès!');
-            setTitle('');
-            setSelectedMusics([]);
+            alert('Playlist ajoutée avec succès!');
+            // Réinitialiser les champs du formulaire ici si nécessaire
         } catch (error) {
             console.error('Erreur:', error);
-        }
-    };
-
-    const handleMusicSelection = (musicId) => {
-        const alreadySelected = selectedMusics.includes(musicId);
-        if (alreadySelected) {
-            setSelectedMusics(selectedMusics.filter(id => id !== musicId));
-        } else {
-            setSelectedMusics([...selectedMusics, musicId]);
         }
     };
 
     return (
         <div>
             <h1>Ajouter une Nouvelle Playlist</h1>
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label htmlFor="title">Titre de la playlist:</label>
-                    <input type="text" id="title" value={title} onChange={(e) => setTitle(e.target.value)} required />
-                </div>
-                <div>
-                    <label>Musiques:</label>
-                    {musics.map(music => (
-                        <div key={music._id}>
-                            <input
-                                type="checkbox"
-                                id={`music-${music._id}`}
-                                value={music._id}
-                                onChange={() => handleMusicSelection(music._id)}
-                                checked={selectedMusics.includes(music._id)}
-                            />
-                            <label htmlFor={`music-${music._id}`}>{music.title}</label>
-                        </div>
-                    ))}
-                </div>
-                <button type="submit">Créer la Playlist</button>
+            <form onSubmit={handleSubmit} encType="multipart/form-data">
+                <input type="text" value={title} onChange={e => setTitle(e.target.value)} placeholder="Titre de la playlist" required />
+                <textarea value={description} onChange={e => setDescription(e.target.value)} placeholder="Description de la playlist" required />
+                <select multiple value={selectedMusics} onChange={e => setSelectedMusics(Array.from(e.target.selectedOptions, option => option.value))}>
+                    {musics.map(music => <option key={music._id} value={music._id}>{music.title}</option>)}
+                </select>
+                <input type="file" onChange={e => setImage(e.target.files[0])} />
+                <button type="submit">Ajouter la Playlist</button>
             </form>
         </div>
     );

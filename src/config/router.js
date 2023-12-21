@@ -11,6 +11,7 @@ import EditArtist from '../pages/Editartist';
 import AddPlaylist from '../pages/Addplaylist';
 import EditPlaylist from '../pages/EditPlaylist';
 import ListPlaylist from '../pages/ListPlaylist';
+import Stats from '../pages/Stats';
 
 const router = createBrowserRouter([
 
@@ -61,7 +62,11 @@ const router = createBrowserRouter([
     {
         path: '/playlist/edit/:id',
         element: <EditPlaylist />
-    }
+    },
+    {
+        path: '/stats',
+        element: <Stats />
+    },
 
 ]);
 export default router;
