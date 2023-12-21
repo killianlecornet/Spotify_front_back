@@ -8,7 +8,7 @@ const ListMusic = () => {
     useEffect(() => {
         const fetchMusics = async () => {
             try {
-                const response = await fetch('http://localhost:3000/music');
+                const response = await fetch(`${process.env.REACT_APP_URI_API}/music`);
                 const data = await response.json();
                 setMusics(data);
             } catch (error) {
@@ -25,7 +25,7 @@ const ListMusic = () => {
 
     const handleDelete = async (musicId) => {
         try {
-            const response = await fetch(`http://localhost:3000/music/${musicId}`, { method: 'DELETE' });
+            const response = await fetch(`${process.env.REACT_APP_URI_API}/music/${musicId}`, { method: 'DELETE' });
             if (!response.ok) {
                 throw new Error('Erreur lors de la suppression de la musique');
             }

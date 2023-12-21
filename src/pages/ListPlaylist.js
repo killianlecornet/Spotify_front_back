@@ -6,7 +6,7 @@ const ListPlaylist = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch('http://localhost:3000/playlist')
+        fetch(`${process.env.REACT_APP_URI_API}/playlist`)
             .then(response => response.json())
             .then(data => setPlaylists(data))
             .catch(error => console.error('Erreur:', error));
@@ -18,7 +18,7 @@ const ListPlaylist = () => {
 
     const handleDelete = async (playlistId) => {
         try {
-            const response = await fetch(`http://localhost:3000/playlist/${playlistId}`, { method: 'DELETE' });
+            const response = await fetch(`${process.env.REACT_APP_URI_API}/playlist/${playlistId}`, { method: 'DELETE' });
             if (!response.ok) {
                 throw new Error('Erreur lors de la suppression de la playlist');
             }

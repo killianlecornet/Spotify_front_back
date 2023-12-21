@@ -11,12 +11,12 @@ const AddArtist = () => {
 
     useEffect(() => {
         // Charger la liste des albums et des musiques
-        fetch('http://localhost:3000/album')
+        fetch(`${process.env.REACT_APP_URI_API}/album`)
             .then(response => response.json())
             .then(data => setAlbums(data))
             .catch(error => console.error('Erreur:', error));
 
-        fetch('http://localhost:3000/music')
+        fetch(`${process.env.REACT_APP_URI_API}/music`)
             .then(response => response.json())
             .then(data => setMusics(data))
             .catch(error => console.error('Erreur:', error));
@@ -35,7 +35,7 @@ const AddArtist = () => {
         }
 
         try {
-            const response = await fetch('http://localhost:3000/artist/upload', {
+            const response = await fetch(`${process.env.REACT_APP_URI_API}/artist/upload`, {
                 method: 'POST',
                 body: formData,
             });

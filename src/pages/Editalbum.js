@@ -14,7 +14,7 @@ const EditAlbum = () => {
 
     useEffect(() => {
         // Charger les détails de l'album
-        fetch(`http://localhost:3000/album/${id}`)
+        fetch(`${process.env.REACT_APP_URI_API}/album/${id}`)
             .then(response => response.json())
             .then(data => {
                 setTitle(data.title);
@@ -26,12 +26,12 @@ const EditAlbum = () => {
             .catch(error => console.error('Erreur:', error));
 
         // Charger la liste des artistes et des musiques
-        fetch('http://localhost:3000/artist')
+        fetch(`${process.env.REACT_APP_URI_API}/artist`)
             .then(response => response.json())
             .then(data => setArtists(data))
             .catch(error => console.error('Erreur:', error));
 
-        fetch('http://localhost:3000/music')
+        fetch(`${process.env.REACT_APP_URI_API}/music`)
             .then(response => response.json())
             .then(data => setMusics(data))
             .catch(error => console.error('Erreur:', error));
@@ -51,7 +51,7 @@ const EditAlbum = () => {
         }
 
         try {
-            const response = await fetch(`http://localhost:3000/album/${id}`, {
+            const response = await fetch(`${process.env.REACT_APP_URI_API}/album/${id}`, {
                 method: 'PUT',
                 body: formData,
             });

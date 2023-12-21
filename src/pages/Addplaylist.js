@@ -9,7 +9,7 @@ const AddPlaylist = () => {
 
     useEffect(() => {
         // Charger la liste des musiques
-        fetch('http://localhost:3000/music')
+        fetch(`${process.env.REACT_APP_URI_API}/music`)
             .then(response => response.json())
             .then(data => setMusics(data))
             .catch(error => console.error('Erreur:', error));
@@ -27,7 +27,7 @@ const AddPlaylist = () => {
         }
 
         try {
-            const response = await fetch('http://localhost:3000/playlist/upload', {
+            const response = await fetch(`${process.env.REACT_APP_URI_API}/playlist/upload`, {
                 method: 'POST',
                 body: formData,
             });

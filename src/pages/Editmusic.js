@@ -11,7 +11,7 @@ const EditMusic = () => {
 
     useEffect(() => {
         // Charger la musique à éditer
-        fetch(`http://localhost:3000/music/${id}`)
+        fetch(`${process.env.REACT_APP_URI_API}/music/${id}`)
             .then(response => response.json())
             .then(data => {
                 console.log('Musique actuelle:', data); // Log pour débogage
@@ -20,7 +20,7 @@ const EditMusic = () => {
             .catch(error => console.error('Erreur lors du chargement de la musique:', error));
 
         // Charger la liste des artistes
-        fetch('http://localhost:3000/artist')
+        fetch(`${process.env.REACT_APP_URI_API}/artist`)
             .then(response => response.json())
             .then(data => {
                 console.log('Liste des artistes:', data); // Log pour débogage
@@ -52,7 +52,7 @@ const EditMusic = () => {
         if (image) formData.append('image', image);
 
         try {
-            const response = await fetch(`http://localhost:3000/music/${id}`, {
+            const response = await fetch(`${process.env.REACT_APP_URI_API}/music/${id}`, {
                 method: 'PUT',
                 body: formData
             });

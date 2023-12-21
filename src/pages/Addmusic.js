@@ -10,7 +10,7 @@ const AddMusic = () => {
 
     useEffect(() => {
         // Charger la liste des artistes
-        fetch('http://localhost:3000/artist')
+        fetch(`${process.env.REACT_APP_URI_API}/artist`)
             .then(response => response.json())
             .then(data => setArtists(data))
             .catch(error => console.error('Erreur:', error));
@@ -27,7 +27,7 @@ const AddMusic = () => {
         if (image) formData.append('image', image);
 
         try {
-            const response = await fetch('http://localhost:3000/music/upload', {
+            const response = await fetch(`${process.env.REACT_APP_URI_API}/music/upload`, {
                 method: 'POST',
                 body: formData // Pas de header 'Content-Type' pour le multipart/form-data
             });

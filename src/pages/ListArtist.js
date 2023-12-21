@@ -6,7 +6,7 @@ const ListArtist = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch('http://localhost:3000/artist')
+        fetch(`${process.env.REACT_APP_URI_API}/artist`)
             .then(response => response.json())
             .then(data => setArtists(data))
             .catch(error => console.error('Erreur:', error));
@@ -18,7 +18,7 @@ const ListArtist = () => {
 
     const handleDelete = async (artistId) => {
         try {
-            const response = await fetch(`http://localhost:3000/artist/${artistId}`, { method: 'DELETE' });
+            const response = await fetch(`${process.env.REACT_APP_URI_API}/artist/${artistId}`, { method: 'DELETE' });
             if (!response.ok) {
                 throw new Error('Erreur lors de la suppression de l\'artiste');
             }

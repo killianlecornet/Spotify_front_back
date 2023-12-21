@@ -11,7 +11,7 @@ const ListAlbum = () => {
 
     const fetchAlbums = async () => {
         try {
-            const response = await fetch('http://localhost:3000/album');
+            const response = await fetch(`${process.env.REACT_APP_URI_API}/album`);
             const data = await response.json();
             setAlbums(data);
         } catch (error) {
@@ -21,7 +21,7 @@ const ListAlbum = () => {
 
     const handleDelete = async (albumId) => {
         try {
-            const response = await fetch(`http://localhost:3000/album/${albumId}`, { method: 'DELETE' });
+            const response = await fetch(`${process.env.REACT_APP_URI_API}/album/${albumId}`, { method: 'DELETE' });
             if (!response.ok) {
                 throw new Error('Erreur lors de la suppression de l\'album');
             }

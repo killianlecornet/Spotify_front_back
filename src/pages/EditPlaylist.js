@@ -12,7 +12,7 @@ const EditPlaylist = () => {
 
     useEffect(() => {
         // Charger les détails de la playlist
-        fetch(`http://localhost:3000/playlist/${id}`)
+        fetch(`${process.env.REACT_APP_URI_API}/playlist/${id}`)
             .then(response => response.json())
             .then(data => {
                 setTitle(data.title);
@@ -22,7 +22,7 @@ const EditPlaylist = () => {
             .catch(error => console.error('Erreur:', error));
 
         // Charger la liste des musiques
-        fetch('http://localhost:3000/music')
+        fetch(`${process.env.REACT_APP_URI_API}/music`)
             .then(response => response.json())
             .then(data => setMusics(data))
             .catch(error => console.error('Erreur:', error));
@@ -40,7 +40,7 @@ const EditPlaylist = () => {
         }
 
         try {
-            const response = await fetch(`http://localhost:3000/playlist/${id}`, {
+            const response = await fetch(`${process.env.REACT_APP_URI_API}/playlist/${id}`, {
                 method: 'PUT',
                 body: formData,
             });
