@@ -38,14 +38,18 @@ const ListMusic = () => {
     return (
         <div>
             <h1>Liste des Musiques</h1>
-            <ul>
+            <ul className="list">
                 {musics.map(music => (
-                    <li key={music._id}>
-                        <h2>{music.title}</h2>
-                        <p>Artiste: {music.artist ? music.artist.name : 'Inconnu'}</p>
-                        <p>Genre: {music.genre}</p>
-                        <button onClick={() => handleEdit(music._id)}>Modifier</button>
-                        <button onClick={() => handleDelete(music._id)}>Supprimer</button>
+                    <li key={music._id} className="list-item">
+                        <div className="item-info">
+                            <h2>{music.title}</h2>
+                            <p>Artiste: {music.artist ? music.artist.name : 'Inconnu'}</p>
+                            <p>Genre: {music.genre}</p>
+                        </div>
+                        <div className="btn-group">
+                            <button onClick={() => handleEdit(music._id)} className="btn btn-edit">Modifier</button>
+                            <button onClick={() => handleDelete(music._id)} className="btn btn-delete">Supprimer</button>
+                        </div>
                     </li>
                 ))}
             </ul>

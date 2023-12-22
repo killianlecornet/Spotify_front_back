@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import './css/list/style.css';
 
 const ListArtist = () => {
     const [artists, setArtists] = useState([]);
@@ -29,16 +30,20 @@ const ListArtist = () => {
     };
 
     return (
-        <div>
+<div>
             <h1>Liste des Artistes</h1>
             <ul>
                 {artists.map(artist => (
                     <li key={artist._id}>
-                        <h2>{artist.name}</h2>
-                        <img src={artist.imageUrl} alt={artist.name} />
-                        <p>{artist.description}</p>
-                        <button onClick={() => handleEdit(artist._id)}>Modifier</button>
-                        <button onClick={() => handleDelete(artist._id)}>Supprimer</button>
+                        <div className="artist-info">
+                            <h2>{artist.name}</h2>
+                            <img src={artist.imageUrl} alt={artist.name} className="artist-image" />
+                            <p>{artist.description}</p>
+                        </div>
+                        <div className="btn-group">
+                            <button onClick={() => handleEdit(artist._id)} className="btn btn-edit">Modifier</button>
+                            <button onClick={() => handleDelete(artist._id)} className="btn btn-delete">Supprimer</button>
+                        </div>
                     </li>
                 ))}
             </ul>

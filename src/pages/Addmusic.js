@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './css/edit&add/style.css';
 
 const AddMusic = () => {
     const [title, setTitle] = useState('');

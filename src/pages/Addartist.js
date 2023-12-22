@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './css/edit&add/style.css';
 
 const AddArtist = () => {
     const [name, setName] = useState('');
@@ -55,16 +56,31 @@ const AddArtist = () => {
         <div className="container">
             <h1>Ajouter un Nouvel Artiste</h1>
             <form onSubmit={handleSubmit} encType="multipart/form-data">
-                <input type="text" value={name} onChange={e => setName(e.target.value)} placeholder="Nom de l'artiste" required />
-                <textarea value={description} onChange={e => setDescription(e.target.value)} placeholder="Description de l'artiste" required />
-                <select multiple value={selectedAlbums} onChange={e => setSelectedAlbums(Array.from(e.target.selectedOptions, option => option.value))}>
-                    {albums.map(album => <option key={album._id} value={album._id}>{album.title}</option>)}
-                </select>
-                <select multiple value={selectedMusics} onChange={e => setSelectedMusics(Array.from(e.target.selectedOptions, option => option.value))}>
-                    {musics.map(music => <option key={music._id} value={music._id}>{music.title}</option>)}
-                </select>
-                <input type="file" onChange={e => setImage(e.target.files[0])} />
-                <button type="submit">Ajouter l'Artiste</button>
+                <div className="form-group">
+                    <label htmlFor="name">Nom de l'artiste:</label>
+                    <input type="text" id="name" value={name} onChange={e => setName(e.target.value)} required />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="description">Description:</label>
+                    <textarea id="description" value={description} onChange={e => setDescription(e.target.value)} required />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="albums">Albums:</label>
+                    <select id="albums" multiple value={selectedAlbums} onChange={e => setSelectedAlbums(Array.from(e.target.selectedOptions, option => option.value))}>
+                        {albums.map(album => <option key={album._id} value={album._id}>{album.title}</option>)}
+                    </select>
+                </div>
+                <div className="form-group">
+                    <label htmlFor="musics">Musiques:</label>
+                    <select id="musics" multiple value={selectedMusics} onChange={e => setSelectedMusics(Array.from(e.target.selectedOptions, option => option.value))}>
+                        {musics.map(music => <option key={music._id} value={music._id}>{music.title}</option>)}
+                    </select>
+                </div>
+                <div className="form-group">
+                    <label htmlFor="image">Image:</label>
+                    <input type="file" id="image" onChange={e => setImage(e.target.files[0])} />
+                </div>
+                <button type="submit" className="btn-submit">Ajouter l'Artiste</button>
             </form>
         </div>
     );

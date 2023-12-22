@@ -29,16 +29,20 @@ const ListPlaylist = () => {
     };
 
     return (
-        <div>
+<div>
             <h1>Liste des Playlists</h1>
-            <ul>
-                {playlists.map((playlist) => (
-                    <li key={playlist._id}>
-                        <h2>{playlist.title}</h2>
-                        <p>Artiste: {playlist.artist ? playlist.artist.name : 'Inconnu'}</p>
-                        <p>Description: {playlist.description}</p>
-                        <button onClick={() => handleEdit(playlist._id)}>Éditer</button>
-                        <button onClick={() => handleDelete(playlist._id)}>Supprimer</button>
+            <ul className="list">
+                {playlists.map(playlist => (
+                    <li key={playlist._id} className="list-item">
+                        <div className="item-info">
+                            <h2>{playlist.title}</h2>
+                            <p>Description: {playlist.description}</p>
+                            <img src={playlist.imageUrl} alt={playlist.title} className="playlist-image" />
+                        </div>
+                        <div className="btn-group">
+                            <button onClick={() => handleEdit(playlist._id)} className="btn btn-edit">Modifier</button>
+                            <button onClick={() => handleDelete(playlist._id)} className="btn btn-delete">Supprimer</button>
+                        </div>
                     </li>
                 ))}
             </ul>

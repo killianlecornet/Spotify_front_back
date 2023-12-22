@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './css/edit&add/style.css';
 
 const AddAlbum = () => {
     const [title, setTitle] = useState('');
@@ -55,21 +56,39 @@ const AddAlbum = () => {
     };
 
     return (
-        <div>
+        <div className="container">
             <h1>Ajouter un Nouvel Album</h1>
             <form onSubmit={handleSubmit} encType="multipart/form-data">
-                <input type="text" value={title} onChange={e => setTitle(e.target.value)} placeholder="Titre de l'album" required />
-                <select value={artist} onChange={e => setArtist(e.target.value)} required>
-                    <option value="">Sélectionnez un artiste</option>
-                    {artists.map(a => <option key={a._id} value={a._id}>{a.name}</option>)}
-                </select>
-                <select multiple value={selectedMusics} onChange={e => setSelectedMusics(Array.from(e.target.selectedOptions, option => option.value))}>
-                    {musics.map(m => <option key={m._id} value={m._id}>{m.title}</option>)}
-                </select>
-                <input type="date" value={releaseDate} onChange={e => setReleaseDate(e.target.value)} required />
-                <textarea value={description} onChange={e => setDescription(e.target.value)} placeholder="Description de l'album" required />
-                <input type="file" onChange={e => setImage(e.target.files[0])} />
-                <button type="submit">Ajouter l'Album</button>
+                <div className="form-group">
+                    <label htmlFor="title">Titre de l'album:</label>
+                    <input type="text" id="title" value={title} onChange={e => setTitle(e.target.value)} required />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="artist">Artiste:</label>
+                    <select id="artist" value={artist} onChange={e => setArtist(e.target.value)} required>
+                        <option value="">Sélectionnez un artiste</option>
+                        {artists.map(a => <option key={a._id} value={a._id}>{a.name}</option>)}
+                    </select>
+                </div>
+                <div className="form-group">
+                    <label htmlFor="musics">Musiques:</label>
+                    <select id="musics" multiple value={selectedMusics} onChange={e => setSelectedMusics(Array.from(e.target.selectedOptions, option => option.value))}>
+                        {musics.map(m => <option key={m._id} value={m._id}>{m.title}</option>)}
+                    </select>
+                </div>
+                <div className="form-group">
+                    <label htmlFor="releaseDate">Date de sortie:</label>
+                    <input type="date" id="releaseDate" value={releaseDate} onChange={e => setReleaseDate(e.target.value)} required />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="description">Description:</label>
+                    <textarea id="description" value={description} onChange={e => setDescription(e.target.value)} required />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="image">Image de l'album:</label>
+                    <input type="file" id="image" onChange={e => setImage(e.target.files[0])} />
+                </div>
+                <button type="submit" className="btn-submit">Ajouter l'Album</button>
             </form>
         </div>
     );

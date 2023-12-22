@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import './css/edit&add/style.css';
 
 const EditPlaylist = () => {
     const [title, setTitle] = useState('');
@@ -57,16 +58,28 @@ const EditPlaylist = () => {
     };
 
     return (
-        <div>
+        <div className="container">
             <h1>Modifier la Playlist</h1>
             <form onSubmit={handleSubmit} encType="multipart/form-data">
-                <input type="text" value={title} onChange={e => setTitle(e.target.value)} required />
-                <textarea value={description} onChange={e => setDescription(e.target.value)} required />
-                <select multiple value={selectedMusics} onChange={e => setSelectedMusics(Array.from(e.target.selectedOptions, option => option.value))}>
-                    {musics.map(music => <option key={music._id} value={music._id}>{music.title}</option>)}
-                </select>
-                <input type="file" onChange={e => setImage(e.target.files[0])} />
-                <button type="submit">Mettre à jour la Playlist</button>
+                <div className="form-group">
+                    <label htmlFor="title">Titre de la playlist:</label>
+                    <input type="text" id="title" value={title} onChange={(e) => setTitle(e.target.value)} required />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="description">Description:</label>
+                    <textarea id="description" value={description} onChange={(e) => setDescription(e.target.value)} required></textarea>
+                </div>
+                <div className="form-group">
+                    <label htmlFor="musics">Musiques:</label>
+                    <select id="musics" multiple value={selectedMusics} onChange={(e) => setSelectedMusics(Array.from(e.target.selectedOptions, option => option.value))}>
+                        {musics.map(music => <option key={music._id} value={music._id}>{music.title}</option>)}
+                    </select>
+                </div>
+                <div className="form-group">
+                    <label htmlFor="image">Image:</label>
+                    <input type="file" id="image" onChange={(e) => setImage(e.target.files[0])} />
+                </div>
+                <button type="submit" className="btn-submit">Mettre à jour la Playlist</button>
             </form>
         </div>
     );

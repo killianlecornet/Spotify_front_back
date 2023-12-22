@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import './css/edit&add/style.css';
 
 const EditMusic = () => {
     const [music, setMusic] = useState({ title: '', artist: '', genre: '' });
@@ -71,14 +72,14 @@ const EditMusic = () => {
     };
 
     return (
-        <div>
+        <div className="container">
             <h1>Éditer la Musique</h1>
             <form onSubmit={handleSubmit} encType="multipart/form-data">
-                <div>
+                <div className="form-group">
                     <label htmlFor="title">Titre:</label>
                     <input type="text" id="title" name="title" value={music.title} onChange={handleChange} required />
                 </div>
-                <div>
+                <div className="form-group">
                     <label htmlFor="artist">Artiste:</label>
                     <select id="artist" name="artist" value={music.artist} onChange={handleChange} required>
                         {artists.map((artist) => (
@@ -86,19 +87,19 @@ const EditMusic = () => {
                         ))}
                     </select>
                 </div>
-                <div>
+                <div className="form-group">
                     <label htmlFor="genre">Genre:</label>
                     <input type="text" id="genre" name="genre" value={music.genre} onChange={handleChange} required />
                 </div>
-                <div>
+                <div className="form-group">
                     <label htmlFor="file">Fichier audio (optionnel):</label>
                     <input type="file" id="file" name="file" onChange={handleFileChange} />
                 </div>
-                <div>
+                <div className="form-group">
                     <label htmlFor="image">Image (optionnel):</label>
                     <input type="file" id="image" name="image" onChange={handleFileChange} />
                 </div>
-                <button type="submit">Mettre à jour la Musique</button>
+                <button type="submit" className="btn-submit">Mettre à jour la Musique</button>
             </form>
         </div>
     );
