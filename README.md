@@ -1,70 +1,35 @@
-# Getting Started with Create React App
+# Spotify_back
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Équipe
+- Lecornet Killian
+- Crespo Matthias
 
-## Available Scripts
+## Liens GitHub pour le rendu
 
-In the project directory, you can run:
+### BackOffice
+- Front : [https://github.com/killianlecornet/Spotify_front_back](https://github.com/killianlecornet/Spotify_front_back)
+- Back : [https://github.com/killianlecornet/spotify_back2.0](https://github.com/killianlecornet/spotify_back2.0)
 
-### `npm start`
+### Mise en Production
+- [Lien vers les projets mis en prod](https://spotify-front-back.vercel.app/)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### App
+- Front : [https://github.com/killianlecornet/Spotify_Front](https://github.com/killianlecornet/Spotify_Front)
+- Back : [https://github.com/killianlecornet/Spotify_api](https://github.com/killianlecornet/Spotify_api)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Mise en Production
+- Api : [https://spotify-front-back.vercel.app/artist](https://spotify-front-back.vercel.app/artist)
+- Front : [https://spotify-front-liard.vercel.app/](https://spotify-front-liard.vercel.app/)
 
-### `npm test`
+## Liens Vidéo Demande Spécifique
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Lors de votre passage, nous vous avons demandé d'ajouter des fonctionnalités. À chaque fonctionnalité correspond une vidéo individuelle, sans compilation. Veuillez mettre les vidéos en privé sur YouTube.
 
-### `npm run build`
+### Demande 1 (searchbar delay)
+- [Vidéo de la fonctionnalité](lien_youtube_searchbar_delay)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Demande 2 (playlist dynamique)
+- [Vidéo de la fonctionnalité](lien_youtube_playlist_dynamique)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Demande 3 (lecture partager)
+- [Vidéo de la fonctionnalité](lien_youtube_lecture_partager)
