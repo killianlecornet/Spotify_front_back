@@ -30,7 +30,7 @@ const ListPlaylist = () => {
 
     return (
 <div>
-            <h1>Liste des Playlists</h1>
+            <h1>Liste des Playlists</h1><a href="/playlist/add" className="header-link">Ajouter une playlist</a>
             <ul className="list">
                 {playlists.map(playlist => (
                     <li key={playlist._id} className="list-item">

@@ -1,16 +1,17 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import './Header.css'; // Adjust the path to your CSS file as needed
+import './header.css'; // Adjust the import path as needed
 
 const Header = () => {
-    return (
-        <div className="header">
-            <Link to="/album" className="header-link"><p>Album</p></Link>
-            <Link to="/playlist" className="header-link"><p>Playlist</p></Link>
-            <Link to="/artist" className="header-link"><p>Artiste</p></Link>
-            <Link to="/music" className="header-link"><p>Music</p></Link>
-        </div>
-    );
+  return (
+    <header className="header">
+      <div className="header-content">
+        <a href="/album" className="header-link">Album</a>
+        <a href="/playlist" className="header-link">Playlist</a>
+        <a href="/artist" className="header-link">Artist</a>
+        <a href="/" className="header-link">Musique</a>
+      </div>
+    </header>
+  );
 };
 
 export default Header;

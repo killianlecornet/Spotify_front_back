@@ -37,7 +37,7 @@ const ListMusic = () => {
 
     return (
         <div>
-            <h1>Liste des Musiques</h1>
+            <h1>Liste des Musiques</h1><a href="/music/add" className="header-link">Ajouter une Musique</a>
             <ul className="list">
                 {musics.map(music => (
                     <li key={music._id} className="list-item">

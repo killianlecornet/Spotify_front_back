@@ -38,7 +38,7 @@ const ListAlbum = () => {
 
     return (
         <div>
-        <h1>Liste des Albums</h1>
+        <h1>Liste des Albums</h1><a href="/album/add" className="header-link">Ajouter un album</a>
         <ul>
             {albums.map(album => (
                 <li key={album._id}>

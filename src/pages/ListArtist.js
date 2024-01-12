@@ -31,7 +31,7 @@ const ListArtist = () => {
 
     return (
 <div>
-            <h1>Liste des Artistes</h1>
+            <h1>Liste des Artistes</h1><a href="/artist/add" className="header-link">Ajouter un artiste</a>
             <ul>
                 {artists.map(artist => (
                     <li key={artist._id}>
