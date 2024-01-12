@@ -43,6 +43,7 @@ const ListAlbum = () => {
             {albums.map(album => (
                 <li key={album._id}>
                     <div className="album-info">
+                    <img src={album.imageUrl} alt={album.name} className="artist-image" />
                         <h2>{album.title}</h2>
                         <p>Artiste: {album.artist ? album.artist.name : 'Inconnu'}</p>
                         <p>Date de sortie: {new Date(album.releaseDate).toLocaleDateString()}</p>

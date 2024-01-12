@@ -62,10 +62,6 @@ const AddPlaylist = () => {
                         {musics.map(music => <option key={music._id} value={music._id}>{music.title}</option>)}
                     </select>
                 </div>
-                <div className="form-group">
-                    <label htmlFor="image">Image:</label>
-                    <input type="file" id="image" onChange={(e) => setImage(e.target.files[0])} />
-                </div>
                 <button type="submit" className="btn-submit">Ajouter la Playlist</button>
             </form>
         </div>

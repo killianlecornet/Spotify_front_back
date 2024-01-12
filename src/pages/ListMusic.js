@@ -41,10 +41,10 @@ const ListMusic = () => {
             <ul className="list">
                 {musics.map(music => (
                     <li key={music._id} className="list-item">
+                        <img src={music.imageUrl} alt={music.name} className="artist-image" />
                         <div className="item-info">
+                        
                             <h2>{music.title}</h2>
-                            <p>Artiste: {music.artist ? music.artist.name : 'Inconnu'}</p>
-                            <p>Genre: {music.genre}</p>
                         </div>
                         <div className="btn-group">
                             <button onClick={() => handleEdit(music._id)} className="btn btn-edit">Modifier</button>
