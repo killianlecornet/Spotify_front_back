@@ -16,7 +16,7 @@ import Stats from '../pages/Stats';
 const router = createBrowserRouter([
 
     {
-        path: '/music',
+        path: '/',
         element: <ListMusic />
     },
     {
