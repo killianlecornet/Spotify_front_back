@@ -1,5 +1,5 @@
 import React from 'react';
-import './header.css'; // Adjust the import path as needed
+import './Header.css'; // Adjust the import path as needed
 
 const Header = () => {
   return (
